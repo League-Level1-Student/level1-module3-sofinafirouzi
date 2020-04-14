@@ -5,16 +5,16 @@ import javax.swing.JOptionPane;
 public class Athlete {
 	public static void main(String[] args) {
 		Athlete abby = new Athlete("Abby", 8);
-		System.out.println(abby.name);
-		System.out.println(abby.bibNumber);
-		System.out.println(abby.raceLocation);
-	
+		System.out.println("Athlete " + abby.name);
+		System.out.println("Bib Number " + abby.bibNumber);
+		System.out.println("The race is located at " + abby.raceLocation);
+	System.out.println("The race will start at " + abby.raceStartTime);
 		
 		Athlete bob = new Athlete("Bob", 7);
-		System.out.println(bob.name);
-		System.out.println(bob.bibNumber);
-		System.out.println(bob.raceLocation);
-		
+		System.out.println("Athlete " +bob.name);
+		System.out.println("Bib Number " + bob.bibNumber);
+		System.out.println("The race is located at " + bob.raceLocation);
+		System.out.println("The race will start at " + bob.raceStartTime);
 		
 	}
 	 static int nextBibNumber;

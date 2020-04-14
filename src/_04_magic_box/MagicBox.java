@@ -19,7 +19,12 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 public class MagicBox extends JPanel implements Runnable, MouseListener {
-
+	public static void main(String[] args) {
+		JFrame frame = new JFrame();
+		frame.setVisible(true);
+		frame.addMouseListener(this);
+	}
+	
 	/*
 	 * We are going to hide secrets within the magic box. 
 	 * When the user clicks on a secret place, stuff will happen.
@@ -33,6 +38,9 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	 *    or the color of the image, then decide what action the Media Palace should take in each case. 
 	 *     backgroundImage.getRGB(e.getX(), e.getY()) will give you the color of the current pixel.
 	 */
+
+	
+
 
 	BufferedImage backgroundImage;
 
@@ -73,7 +81,7 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		paintComponent();
 	}
 
 	@Override
