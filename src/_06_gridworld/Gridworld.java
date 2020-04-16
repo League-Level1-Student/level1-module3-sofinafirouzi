@@ -1,6 +1,7 @@
 package _06_gridworld;
 
 import java.awt.Color;
+import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -28,7 +29,7 @@ public class Gridworld {
 		world.add(right, flower);
 		Location left = new Location (43, 50);
 		world.add(left, flower);
-		Location random = new Location();
+		Location moreFlowers = new Location(54,72);
 		//need a random x random y for random location which u also need for #3 
 	}
 	

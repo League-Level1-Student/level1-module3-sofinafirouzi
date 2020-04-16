@@ -12,18 +12,20 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 public class MagicBox extends JPanel implements Runnable, MouseListener {
-	public static void main(String[] args) {
-		JFrame frame = new JFrame();
-		frame.setVisible(true);
-		frame.addMouseListener(this);
-	}
+	
+	
+	
+	
+	
 	
 	/*
 	 * We are going to hide secrets within the magic box. 
@@ -41,12 +43,17 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 
 	
 
-
 	BufferedImage backgroundImage;
 
-
+	MediaPalace mediaPalace = new MediaPalace();
 	@Override
 	public void run() {
+		
+		
+		JFrame frame = new JFrame();
+		frame.setVisible(true);
+		frame.add(this);
+		addMouseListener(this);
 		try {
 			loadBackgroundImage();
 			createUI();
@@ -81,13 +88,28 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		paintComponent();
+		System.out.println( "x = " +  e.getX() + "y=" + e.getY());
+		if(e.getX()<385 || e.getY() <186 ) {
+			try {
+				JFrame newFrame = new JFrame();
+				newFrame.setVisible(true);
+				
+				
+				JLabel label = mediaPalace.loadImageFromTheInternet("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.thelabradorsite.com%2Fcute-puppy-names%2F&psig=AOvVaw12f0wYSFGLxonblV9cVmCe&ust=1587085940863000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJC8zv_h6-gCFQAAAAAdAAAAABAD");
+				newFrame.add(label);
+				newFrame.pack();
+			} catch (MalformedURLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+		
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+			mediaPalace.loadImageFromWithinProject("magic-box.jpg");
 	}
 
 	@Override
