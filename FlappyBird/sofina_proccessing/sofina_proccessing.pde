@@ -1,69 +1,60 @@
-
-int birdX = 50;
-int birdY = 350;
+     PImage back;
+     PImage pipeBottom;
+     PImage pipeTop;
+     PImage bird;
+int birdX = 250;
+int birdY = 300;
 int birdYVelocity = 50;
-int gravity = 1;
-
-int pipeX = 50;
-int upperPipeHeight = (int) random(100, 400);
-int pipeGap = 70;
-int lowerY = upperPipeHeight + pipeGap;
-int lowerPipeTop = 500-lowerY;
-int pipeWidth = 50;
-//basically re do this with new variables to match bc i changed the pictures
-PImage back;
-PImage pipeBottom;
-PImage pipeTop;
-PImage bird;
+int gravity = 3;
+int pipeX = 150;
+int pipeGap = 30;
+  int upperPipeHeight = (int) random(100, 400);
+  int lowerY = upperPipeHeight + pipeGap;
+  int lowerPipeTop = 500 - lowerY;
+int pipeY = -130;
 
 
-void draw(){
-
-   background(back);
-            image (pipeBottom,250,375);
-            image (pipeTop,250,-130);
-            image (bird, 250, 300);
-  
-birdDown();
-
-rect(xPipe, 0, 50, upperPipeHeight);
-rect(xPipe, lowerY, 50, bottomPipe);
-moveTube();
-teleportPipes();
-}//end draw
-void teleportPipes(){
-  xPipe=xPipe+500;
-}
-void moveTube(){
-  xPipe = xPipe-15;
-}
 
 void setup(){
-   back = loadImage("flappyBackground.jpg");
-   back.resize(500,500);
+  size(500,500);
+      back = loadImage("flappyBackground.jpg");
             pipeBottom = loadImage("bottomPipe.png");
             pipeTop = loadImage("topPipe.png");
             bird = loadImage("bird.png");
             bird.resize(50,50);
-  size(500,500);
-  teleportPipes();
-  
+            back.resize(500,500);
+            teleportPipe();
 }//end setup
 
+void draw(){
+            background(back);
+            image (pipeBottom,pipeX, lowerY);
+            image (pipeTop, pipeX,pipeY);
+            image (bird, birdX, birdY);
+            gravityAffect();
+            movePipe();
+            teleportPipe();
+             pipeTop.resize(70,upperPipeHeight);
+            pipeBottom.resize(70, lowerPipeTop);
+}//end draw
+void gravityAffect(){
+  birdY = birdY + gravity;
+}//end gravity
 void flap(){
-  y=y-birdYVelocity;
-}
-void birdDown(){
-  y=y+gravity;
-}
+  birdY = birdY - birdYVelocity;
+}//set flap
+void movePipe(){
+  pipeX = pipeX - 5;
+}//end move pipe
+void teleportPipe(){
+  if(pipeX==0){
+pipeX =500;
+  upperPipeHeight = (int) random(100, 400);
+  lowerY = upperPipeHeight + pipeGap;
+   lowerPipeTop = 500-lowerY;
+  
+  }
+}//end teleport pipe
 void mousePressed(){
   flap();
-  intersectsPipes();
-}
-boolean intersectsPipes() { 
-         if (birdY < upperPipeHeight && birdX > pipeX && birdX < (pipeX+pipeWidth)){
-            return true; }
-        else if (birdY>lowerPipeTop && birdX > pipeX && birdX < (pipeX+pipeWidth)) {
-            return true; }
-        else { return false; }
-}
+}//end mouse pressed
