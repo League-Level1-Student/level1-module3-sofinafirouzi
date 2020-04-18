@@ -16,20 +16,20 @@ public class Gridworld {
 		World world = new World();
 		world.show();
 		Bug bug = new Bug();
-		Location spot = new Location(24, 54);
+		Location spot = new Location(3, 5);
 		world.add(spot, bug);
 		Bug bugTwo = new Bug();
-		Location spotTwo = new Location(43, 67);
+		Location spotTwo = new Location(4, 6);
 		world.add(spotTwo, bugTwo);
 		bugTwo.setColor(Color.blue);
 		bugTwo.turn();
 		bugTwo.turn();
-		Location right = new Location(43,80);
+		Location right = new Location(3,6);
 		Flower flower = new Flower();
 		world.add(right, flower);
-		Location left = new Location (43, 50);
+		Location left = new Location (4,5);
 		world.add(left, flower);
-		Location moreFlowers = new Location(54,72);
+		Location moreFlowers = new Location(5,7);
 		//need a random x random y for random location which u also need for #3 
 	}
 	
